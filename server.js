@@ -1,9 +1,10 @@
 const express = require("express");
-const app = express();
 const path = require("path");
-const server = require("http").createServer(app);
-const routes = require("./routes/information");
 const cors = require("cors");
+const routes = require("./routes/information");
+
+const app = express();
+const server = require("http").createServer(app);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "public"));
