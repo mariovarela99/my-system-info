@@ -22,12 +22,14 @@
       body {
         min-width: 100%;
         min-height: 100vh;
+        display: flex;
       }
 
       #root {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
         width: 100%;
         height: 100%;
       }
@@ -35,14 +37,47 @@
   </head>
   <body>
     <div id="root">
-      <h1>Welcome To My System Info - Tap to see your information</h1>
+      <h1>My System Info - Tap to see your system information</h1>
+
+      <div id="InfoContainer">
+        <table id="table_info"></table>
+      </div>
     </div>
 
     <script>
-      axios
-        .get(`${window.location.href}information`)
-        .then((response) => console.log(response.data))
-        .catch(({ response }) => console.log(response));
+      const TableInfo = document.querySelector("table#table_info");
+      let InfoData = [];
+
+      async function getData() {
+        await axios
+          .get(`${window.location.href}information`)
+          .then((response) => {
+            console.log("Systrem Info => ", response.data);
+            InfoData = response.data.Info;
+          })
+          .catch(({ response }) => console.log(response));
+
+        RenderInfo();
+      }
+
+      function RenderInfo() {
+        InfoData.forEach((element) => {
+          let LinhaInfo = document.createElement("tr");
+          let ColunaInfoDesc = document.createElement("td");
+          let ColunaInfoValue = document.createElement("td");
+          ColunaInfoDesc.innerHTML = element.desc;
+          ColunaInfoValue.innerHTML = element.value;
+
+          LinhaInfo.appendChild(ColunaInfoDesc);
+          LinhaInfo.appendChild(ColunaInfoValue);
+
+          TableInfo.appendChild(LinhaInfo);
+        });
+      }
+
+      window.addEventListener("load", () => {
+        getData();
+      });
     </script>
   </body>
 </html>
