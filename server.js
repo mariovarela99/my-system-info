@@ -14,4 +14,6 @@ app.set("view engine", "html");
 app.use("/", cors());
 app.use("/", routes);
 
-server.listen(3333, () => console.log("Server running on port 3333"));
+server.listen(process.env.PORT || 3000, () =>
+  console.log("Server running on port 3000")
+);
