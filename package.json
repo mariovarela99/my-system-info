@@ -1,0 +1,20 @@
+{
+  "name": "my-system-info",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon ./server.js",
+    "start": "node ./server.js"
+  },
+  "repository": "https://github.com/mariovarela99/my-system-info.git",
+  "author": "mariovarela99 <mariovarela99@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "os": "^0.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
