@@ -55,7 +55,10 @@
             console.log("Systrem Info => ", response.data);
             InfoData = response.data.Info;
           })
-          .catch(({ response }) => console.log(response));
+          .catch(({ response }) => {
+            alert("Erro ao Pegar as Informações.!");
+            console.log(response);
+          });
 
         RenderInfo();
       }
